@@ -449,24 +449,5 @@ class DatabaseSeeder extends Seeder
             'content' => 'キャリアについて考えるきっかけになりました。',
             'is_approved' => true,
         ]);
-
-        // スパムコメント（未承認）
-        Comment::create([
-            'post_id' => $posts[5]->id,
-            'user_id' => null,
-            'guest_name' => 'スパム業者',
-            'guest_email' => 'spam@example.com',
-            'content' => '儲かる副業情報はこちら！',
-            'is_approved' => false,
-        ]);
-
-        Comment::create([
-            'post_id' => $posts[7]->id,
-            'user_id' => null,
-            'guest_name' => '広告bot',
-            'guest_email' => 'bot@spam.com',
-            'content' => 'クリックしてください',
-            'is_approved' => false,
-        ]);
     }
 }

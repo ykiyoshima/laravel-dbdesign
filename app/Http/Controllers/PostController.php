@@ -19,11 +19,14 @@ class PostController extends Controller
         $query = Post::with(['user', 'category', 'tags'])
             ->where('status', 'published');
 
-        // キーワード検索（フルテキストインデックス使用）
+        // キーワード検索（日本語対応）
         if ($request->filled('keyword')) {
             $keyword = $request->keyword;
-            // MySQL 5.7+のフルテキスト検索を使用
-            $query->whereFullText(['title', 'content'], $keyword);
+            // 日本語検索に対応するためLIKE検索を使用
+            $query->where(function ($q) use ($keyword) {
+                $q->where('title', 'LIKE', "%{$keyword}%")
+                  ->orWhere('content', 'LIKE', "%{$keyword}%");
+            });
         }
 
         // カテゴリフィルタ（複数選択）

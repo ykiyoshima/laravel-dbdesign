@@ -20,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') !== 'local') {
+        // APP_URLがhttpsで始まる場合はHTTPSを強制
+        if (str_starts_with(config('app.url'), 'https://')) {
             URL::forceScheme('https');
         }
         
