@@ -9,7 +9,6 @@
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h1 class="text-3xl font-bold text-gray-800 mb-4">📝 記事一覧</h1>
             <p class="text-gray-600">最新の技術記事をチェックしよう</p>
-            <p class="text-gray-600">Update from GitHub Actions</p>
         </div>
 
         <!-- 検索フォーム (スマホ表示用) -->
